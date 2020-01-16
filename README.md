@@ -46,3 +46,12 @@ Dans les deux cas, l'avion est supprimé de la file d'atterrissage
     - Faire décoller un avion si la file de décollage est plus grande que la file d'atterrissage
 Dans tous les cas, l'avion est supprimé de la file correspondante
 5. Incrementer l'horloge.
+
+
+Annexes
+----------
+
+- [Doc Java 8](https://docs.oracle.com/javase/8/docs/api/)
+- [Doc Java 11](https://docs.oracle.com/en/java/javase/11/docs/api/)
+- [Doc Java 13](https://docs.oracle.com/en/java/javase/13/docs/api/)
+- [Doc JUnit 4.13](https://junit.org/junit4/javadoc/latest/index.html)
