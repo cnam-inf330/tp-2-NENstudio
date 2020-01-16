@@ -38,7 +38,7 @@ public class AirportSimulator {
         System.out.println("Turn " + this.tick + " : creating new planes");
         System.out.println("=====================================================================");
 
-        // 1. Insert new planes into the system
+        // Step 1 : Insert new planes into the system
         for (int i = 0; i < numNewLanding; i++)
             createPlane(fuelCapacitiesLanding[i], true);
         for (int i = 0; i < numNewTakingOff; i++)
@@ -60,11 +60,11 @@ public class AirportSimulator {
         System.out.println("Turn " + this.tick + " : simulating");
         System.out.println("=====================================================================");
 
-        // 2. Decrement fuel capacity of flying planes
+        // Step 2 : Decrement fuel capacity of flying planes
         for (Plane plane : flyingPlanes)
             plane.fly();
 
-        // 3. Land planes with a fuel capacity of zero
+        // Step 3 : Land planes with a fuel capacity of zero
         int numRunwaysUsed = 0;
         int numPlanesCrashed = 0;
         if (!flyingPlanes.isEmpty()) {
@@ -89,7 +89,7 @@ public class AirportSimulator {
             }
         }
 
-        // 4. If less than NUM_RUNWAYS planes were landed during the previous step,
+        // Step 4 : If less than NUM_RUNWAYS planes were landed during the previous step,
         // Use the remaining runways to either land or fly planes
         while ((!landedPlanes.isEmpty() || !flyingPlanes.isEmpty()) && numRunwaysUsed < NUM_RUNWAYS) {
             // If there are more landed planes than flying planes, fly planes
@@ -105,7 +105,7 @@ public class AirportSimulator {
             numRunwaysUsed++;
         }
 
-        // 5. Increment clock
+        // Step 5 : Increment clock
         this.tick++;
 
         System.out.println();

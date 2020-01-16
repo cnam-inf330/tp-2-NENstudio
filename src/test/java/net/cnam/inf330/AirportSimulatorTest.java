@@ -13,8 +13,8 @@ public class AirportSimulatorTest {
     // TODO 2. Write a method for testing the PriorityQueue
     //...
 
-    /* TODO 5. Complete this method for testing the exception InvalidFuelCapacityException in the
-        {@link net.cnam.inf330.AirportSimulator#createPlane(int, boolean) createPlane} method
+    /* TODO 5. Complete this method for testing the InvalidFuelCapacityException in the
+        AirportSimulator::createPlane method
      */
     @Test
     public void testInvalidFuelCapacityException() {
