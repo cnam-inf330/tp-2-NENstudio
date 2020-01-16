@@ -5,14 +5,14 @@ package net.cnam.inf330;
  */
 // TODO 3.a) Make Plane an abstract class that implements the IPlane interface
 // TODO 6.a) Make Plane an Observable object
-public class Plane {
+public abstract class Plane {
 
     public static final int MAX_FUEL_CAPACITY = 5;
 
     private int creationTick;
     private String name;
     private boolean isFlying;
-    private int fuelCapacity;
+    protected int fuelCapacity;
 
     public Plane(int tick, String name, boolean isFlying, int fuelCapacity) {
         this.creationTick = tick;

@@ -8,20 +8,21 @@ import java.util.Queue;
  * Class for implementing the simulation system.
  */
 // TODO 6.a) Make AirportSimulator an Observer object
-public class AirportSimulator {
+public class AirportSimulator extends Exception {
 
     private final int NUM_RUNWAYS = 3;
 
     private int tick;
     private int planeCount;
     // TODO 1.a) Declare a PriorityQueue to store the flying planes waiting to land
-    //private ... flyingPlanes;
+    private PriorityQueue<Plane> flyingPlanes;
     // TODO 1.b) Declare a Queue (LinkedList) to store the landed planes waiting to take off
-    //private ... landedPlanes;
+    private Queue<Plane> landedPlanes;
 
     public AirportSimulator() {
         this.tick = 1;
         this.planeCount = 0;
+
         //...
     }
 
@@ -32,7 +33,7 @@ public class AirportSimulator {
      * @param numNewTakingOff       The number of new planes on the ground waiting to take off
      * @param fuelCapacitiesLanding The starting fuel capacity of each plane in the air waiting to land
      */
-    public void simulateTurnWithNewPlanes(int numNewLanding, int numNewTakingOff, int[] fuelCapacitiesLanding) {
+    public void simulateTurnWithNewPlanes(int numNewLanding, int numNewTakingOff, int[] fuelCapacitiesLanding) throws InvalidFuelCapacityException {
         System.out.println();
         System.out.println("=====================================================================");
         System.out.println("Turn " + this.tick + " : creating new planes");
@@ -121,16 +122,23 @@ public class AirportSimulator {
      * @param flying
      */
     // TODO 4. Throw an InvalidFuelCapacityException when fuelCapacity is negative
-    private void createPlane(int fuelCapacity, boolean flying) {
+    private void createPlane(int fuelCapacity, boolean flying) throws InvalidFuelCapacityException{
         String name = "Plane" + planeCount++;
-        Plane plane = new Plane(this.tick, name, flying, fuelCapacity);
+        Plane plane = new NormalPlane(this.tick, name, flying, fuelCapacity);
         System.out.println("Created plane : " + name + " (" + fuelCapacity + ", " +
                 (flying ? "air" : "ground") + ")");
         if (flying)
             flyingPlanes.add(plane);
         else
             landedPlanes.add(plane);
+
+        if(fuelCapacity<0){
+          throw new InvalidFuelCapacityException();
+        }
     }
+
+
+
 
     /**
      * blabla
@@ -141,4 +149,7 @@ public class AirportSimulator {
         // Simulation is over if both queues are empty, otherwise it can continue
         return this.flyingPlanes.isEmpty() && this.landedPlanes.isEmpty();
     }
+
+
+
 }

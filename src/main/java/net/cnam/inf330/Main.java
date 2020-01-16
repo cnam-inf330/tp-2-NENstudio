@@ -9,7 +9,7 @@ public class Main {
      * Main method for running the Airport Simulator application.
      * @param args --
      */
-    public static void main(String[] args) {
+    public static void main(String[] args)throws InvalidFuelCapacityException {
         AirportSimulator simulator = new AirportSimulator();
         simulator.simulateTurnWithNewPlanes(3, 3, new int[]{1, 1, 1});
         simulator.simulateTurnWithNewPlanes(3, 3, new int[]{2, 2, 2});
