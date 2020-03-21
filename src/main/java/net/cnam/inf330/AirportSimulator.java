@@ -7,7 +7,7 @@ import java.util.Queue;
 /**
  * Class for implementing the simulation system.
  */
-// TODO 6.a) Make AirportSimulator an Observer object
+// TODO FIXME 6.a) Make AirportSimulator an Observer object
 public class AirportSimulator extends Exception {
 
     private final int NUM_RUNWAYS = 3;
@@ -22,7 +22,7 @@ public class AirportSimulator extends Exception {
     public AirportSimulator() {
         this.tick = 1;
         this.planeCount = 0;
-
+        // FIXME Initialize the PriorityQueue and Queue
         //...
     }
 
@@ -132,6 +132,7 @@ public class AirportSimulator extends Exception {
         else
             landedPlanes.add(plane);
 
+        // FIXME This should be before the plane creation logic
         if(fuelCapacity<0){
           throw new InvalidFuelCapacityException();
         }
